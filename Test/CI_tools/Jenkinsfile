@@ -1,0 +1,58 @@
+pipeline {
+    agent any 
+
+    environment {
+        TOOL_DIR = "${WORKSPACE}\\CI_tools"
+    }
+
+    stages {
+        stage('Build') { 
+            steps {
+                bat "${TOOL_DIR}\\build.bat ${WORKSPACE}\\Debug Debug all"
+                bat "${TOOL_DIR}\\build.bat ${WORKSPACE}\\Release Release all"
+            }
+        }
+
+        stage('Static Code Analysis') {
+            steps {
+                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                    bat "${TOOL_DIR}\\static-analysis.bat ${WORKSPACE}"
+                }
+            }
+        }
+
+        stage('Flash-Debug') { 
+            steps {
+                bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Debug\\Test.bin"
+            }
+        }
+
+        stage('Flash-Release') { 
+            steps {
+                bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Release\\Test.bin"
+            }
+        }
+
+    }
+
+    post {
+        success {
+            script {
+                emailext (
+                    to: '${DEFAULT_RECIPIENTS}',
+                    subject: "Successful build ${env.BUILD_ID}",
+                    body: "Build ${env.BUILD_ID} has result ${currentBuild.currentResult}"
+                )
+            }
+        }
+        unsuccessful {
+            script {
+                emailext (
+                    to: '${DEFAULT_RECIPIENTS}',
+                    subject: "Unsuccessful build ${env.BUILD_ID}",
+                    body: "Build ${env.BUILD_ID} has result ${currentBuild.currentResult}"
+                )
+            }
+        }
+    }
+}

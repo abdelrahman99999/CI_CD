@@ -761,3 +761,13 @@
 2024-01-30 21:37:30,001 [INFO] ApiDb:451 - User favorites MCUs=[]
 2024-01-30 21:37:30,003 [INFO] ApiDb:447 - Save user favorites file C:\Users\Lenovo/.stm32cubeide/favorites.boards.txt: 1 item(s)
 2024-01-30 21:37:30,003 [INFO] ApiDb:451 - User favorites Boards=[NUCLEO-F439ZI]
+2024-01-30 22:24:37,072 [INFO] WebAppUi:459 - Close the Jxbrowser engine manually
+2024-01-30 22:24:37,187 [INFO] WebAppUi:462 - Profiles folder deleted
+2024-01-30 22:24:37,509 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
+2024-02-01 15:09:40,205 [INFO] Activator:179 - 
+
+
+2024-02-01 15:09:40,205 [INFO] Activator:180 - !SESSION log4j initialized
+2024-02-01 15:10:08,504 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2024-02-01 15:10:08,505 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2024-02-01 15:10:08,507 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
