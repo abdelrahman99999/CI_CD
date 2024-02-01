@@ -40,8 +40,9 @@ pipeline {
             script {
                 emailext (
                     to: '${DEFAULT_RECIPIENTS}',
-                    subject: "Successful build ${env.BUILD_ID}",
-                    body: "Build ${env.BUILD_ID} has result ${currentBuild.currentResult}"
+                    subject: "${env.JOB_NAME} Successful build ${env.BUILD_ID}",
+                    body: "Build ${env.BUILD_ID} has result ${currentBuild.currentResult} 
+					Find the results In ${env.BUILD_URL }"
                 )
             }
         }
@@ -49,8 +50,9 @@ pipeline {
             script {
                 emailext (
                     to: '${DEFAULT_RECIPIENTS}',
-                    subject: "Unsuccessful build ${env.BUILD_ID}",
-                    body: "Build ${env.BUILD_ID} has result ${currentBuild.currentResult}"
+                    subject: "${env.JOB_NAME} Unsuccessful build ${env.BUILD_ID}",
+                    body: "Build ${env.BUILD_ID} has result ${currentBuild.currentResult}
+					Find the results In ${env.BUILD_URL }"
                 )
             }
         }
