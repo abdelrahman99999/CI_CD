@@ -2,34 +2,34 @@ pipeline {
     agent any 
 
     environment {
-        TOOL_DIR = "${WORKSPACE}\\CI_tools"
+        TOOL_DIR = "${WORKSPACE}\\Test\\CI_tools"
     }
 
     stages {
         stage('Build') { 
             steps {
-                bat "${TOOL_DIR}\\build.bat ${WORKSPACE}\\Debug Debug all"
-                bat "${TOOL_DIR}\\build.bat ${WORKSPACE}\\Release Release all"
+                bat "${TOOL_DIR}\\build.bat ${WORKSPACE}\\Test\\Debug Debug all"
+                bat "${TOOL_DIR}\\build.bat ${WORKSPACE}\\Test\\Release Release all"
             }
         }
 
         stage('Static Code Analysis') {
             steps {
                 catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
-                    bat "${TOOL_DIR}\\static-analysis.bat ${WORKSPACE}"
+                    bat "${TOOL_DIR}\\static-analysis.bat ${WORKSPACE}\\Test"
                 }
             }
         }
 
         stage('Flash-Debug') { 
             steps {
-                bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Debug\\Test.bin"
+                bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Test\\Debug\\Test.bin"
             }
         }
 
         stage('Flash-Release') { 
             steps {
-                bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Release\\Test.bin"
+                bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Test\\Release\\Test.bin"
             }
         }
 
