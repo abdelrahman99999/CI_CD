@@ -40,10 +40,10 @@ pipeline {
             script {
                 emailext (
                     to: '${DEFAULT_RECIPIENTS}',
-                    subject: "${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!",
-                    body: """${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}.<br/>
+                    subject: "${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}!",
+                    body: """${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}.<br/>
 <br/>
-Check console <a href="${BUILD_URL}">output</a> to view full results.<br/>"""
+Check console <a href="${env.BUILD_URL}">output</a> to view full results.<br/>"""
                 )
             }
         }
@@ -51,10 +51,10 @@ Check console <a href="${BUILD_URL}">output</a> to view full results.<br/>"""
             script {
                 emailext (
                     to: '${DEFAULT_RECIPIENTS}',
-                      subject: "${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!",
-                    body: """${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}.<br/>
+                    subject: "${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}!",
+                    body: """${env.PROJECT_NAME} - Build # ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}.<br/>
 <br/>
-Check console <a href="${BUILD_URL}">output</a> to view full results.<br/>"""
+Check console <a href="${env.BUILD_URL}">output</a> to view full results.<br/>"""
                 )
             }
         }
