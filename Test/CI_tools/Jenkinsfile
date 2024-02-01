@@ -21,13 +21,13 @@ pipeline {
             }
         }
 
-        stage('Flash-Debug') { 
+        stage('Flash-Debug-Image') { 
             steps {
                 bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Test\\Debug\\Test.bin"
             }
         }
 
-        stage('Flash-Release') { 
+        stage('Flash-Release-Image') { 
             steps {
                 bat "${TOOL_DIR}\\flash.bat $params.DUT_STLINK_sn ${WORKSPACE}\\Test\\Release\\Test.bin"
             }
