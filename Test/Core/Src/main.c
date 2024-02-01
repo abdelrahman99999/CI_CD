@@ -111,9 +111,9 @@ int main(void)
   {
 
 	  /*Toggling led*/
-	  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_SET);
+	  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin,GPIO_PIN_SET);
 	  HAL_Delay(500);
-	  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin,GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin,GPIO_PIN_RESET);
 	  HAL_Delay(500);
     /* USER CODE END WHILE */
 
