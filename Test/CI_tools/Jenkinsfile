@@ -40,9 +40,10 @@ pipeline {
             script {
                 emailext (
                     to: '${DEFAULT_RECIPIENTS}',
-                    subject: "${env.JOB_NAME} Successful build ${env.BUILD_ID}",
-                    body: """Build ${env.BUILD_ID} has result ${currentBuild.currentResult}
-Find the results In ${env.BUILD_URL}"""
+                    subject: "${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!",
+                    body: """${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}.<br/>
+<br/>
+Check console <a href="${BUILD_URL}">output</a> to view full results.<br/>"""
                 )
             }
         }
@@ -50,9 +51,10 @@ Find the results In ${env.BUILD_URL}"""
             script {
                 emailext (
                     to: '${DEFAULT_RECIPIENTS}',
-                    subject: "${env.JOB_NAME} Unsuccessful build ${env.BUILD_ID}",
-                    body: """Build ${env.BUILD_ID} has result ${currentBuild.currentResult}
-Find the results In ${env.BUILD_URL}"""
+                      subject: "${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}!",
+                    body: """${PROJECT_NAME} - Build # ${BUILD_NUMBER} - ${BUILD_STATUS}.<br/>
+<br/>
+Check console <a href="${BUILD_URL}">output</a> to view full results.<br/>"""
                 )
             }
         }
